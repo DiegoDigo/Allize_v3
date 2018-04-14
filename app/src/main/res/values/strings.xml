@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Allize</string>
+    <string name="hint_password">Senha</string>
+    <string name="hint_email">E-mail</string>
+    <string name="button_login_in">Login In</string>
+    <string name="title_activity_login">LoginActivity</string>
+</resources>

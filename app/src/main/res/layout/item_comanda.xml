@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:layout_margin="13dp"
+    android:id="@+id/list_item">
+
+    <TextView
+        android:background="@drawable/data_custumer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="25sp"
+        android:textColor="@color/colorwhite"
+        android:textStyle="bold"
+        android:id="@+id/data"
+        android:layout_marginEnd="6dp"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="6dp">
+            <TextView
+                android:gravity="start"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textSize="16sp"
+                android:id="@+id/nome"
+                android:textStyle="bold"/>
+            <TextView
+                android:gravity="end"
+                android:layout_weight="1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textStyle="italic"
+                android:textSize="13sp"
+                android:textColor="#adadbc"
+                android:id="@+id/horario"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="6dp">
+            <TextView
+                android:gravity="start"
+                android:id="@+id/servico"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textColor="#adadbc"
+                android:textSize="14sp"/>
+            <TextView
+                android:id="@+id/num_comanda"
+                android:gravity="end"
+                android:layout_weight="1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#8c8c99"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>
