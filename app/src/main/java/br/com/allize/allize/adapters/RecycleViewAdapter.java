@@ -2,6 +2,7 @@ package br.com.allize.allize.adapters;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -66,7 +67,7 @@ public class RecycleViewAdapter extends RecyclerView.Adapter<RecycleViewAdapter.
         private TextView tv_servico;
         private TextView tv_nComanda;
         private TextView tv_data;
-        private LinearLayout item_comanda;
+        private CardView item_comanda;
         public MyViewHolder(View itemView) {
             super(itemView);
             item_comanda = itemView.findViewById(R.id.list_item);

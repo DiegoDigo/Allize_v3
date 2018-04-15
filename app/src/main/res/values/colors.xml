@@ -6,5 +6,7 @@
     <color name="colortransp">#00cccccc</color>
     <color name="colorwhite">#fff</color>
     <color name="colorwhiteTransp">#cccccc</color>
+    <color name="colorbluedark">#448aff</color>
+    <color name="colorsilver">#dfdada</color>
 </resources>
 
