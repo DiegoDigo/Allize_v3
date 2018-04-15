@@ -1,6 +1,12 @@
 package br.com.allize.allize.adapters;
 
+import android.app.Dialog;
+import android.content.ComponentName;
 import android.content.Context;
+import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
+import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
@@ -20,6 +26,10 @@ public class RecycleViewAdapter extends RecyclerView.Adapter<RecycleViewAdapter.
 
     Context context;
     List<Comanda> data;
+    Dialog dialog;
+    Intent intetCall;
+    Intent intetEmail;
+    Intent intetWhat;
 
 
     public RecycleViewAdapter(Context context, List<Comanda> comandas){
@@ -33,12 +43,74 @@ public class RecycleViewAdapter extends RecyclerView.Adapter<RecycleViewAdapter.
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(context).inflate(R.layout.item_comanda, parent,
                 false);
-        MyViewHolder viewHolder = new MyViewHolder(view);
+        final MyViewHolder viewHolder = new MyViewHolder(view);
+
+        intetCall = new Intent(Intent.ACTION_DIAL);
+        intetWhat = new Intent(Intent.ACTION_SENDTO);
+        intetEmail = new Intent(Intent.ACTION_SENDTO);
+
+        dialog = new Dialog(context);
+        dialog.setContentView(R.layout.poup_item_comanda);
+        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+
 
         viewHolder.item_comanda.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(context, "teste", Toast.LENGTH_LONG).show();
+
+                final TextView name = dialog.findViewById(R.id.popup_name);
+                final TextView hora = dialog.findViewById(R.id.popup_hora);
+                TextView servico = dialog.findViewById(R.id.popup_servico);
+                LinearLayout ligar = dialog.findViewById(R.id.popup_ligar);
+                LinearLayout msg = dialog.findViewById(R.id.popup_msg);
+                LinearLayout email = dialog.findViewById(R.id.popup_email);
+
+                name.setText(data.get(viewHolder.getAdapterPosition()).getNome());
+                hora.setText(data.get(viewHolder.getAdapterPosition()).getHora());
+                servico.setText(data.get(viewHolder.getAdapterPosition()).getServico());
+                dialog.show();
+                ligar.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        intetCall.setData(Uri.parse("tel:" + data.get(viewHolder.getAdapterPosition()).getTelefone()));
+                        context.startActivity(intetCall);
+                        dialog.dismiss();
+                    }
+                });
+                msg.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v){
+
+                        String msg =
+                                String.format("Olá, %s está confirmado o agendamento para as %s ?" ,
+                                name.getText().toString(), hora.getText().toString());
+
+                        intetWhat.setAction(Intent.ACTION_VIEW);
+                        String url = "https://api.whatsapp.com/send?phone=55"
+                                + data.get(viewHolder.getAdapterPosition()).getTelefone().trim()
+                                + "&text=" + msg ;
+                        intetWhat.setData(Uri.parse(url));
+                        context.startActivity(intetWhat);
+                        dialog.dismiss();
+                    }
+                });
+                email.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        String msg =
+                                String.format("Olá, %s está confirmado o agendamento para as %s ?" ,
+                                        name.getText().toString(), hora.getText().toString());
+
+                        intetEmail.setData(Uri.parse("mailto:" +
+                                data.get(viewHolder.getAdapterPosition()).getEmail().trim()));
+                        intetEmail.putExtra(Intent.EXTRA_SUBJECT,"Agendamento");
+                        intetEmail.putExtra(Intent.EXTRA_TEXT, msg);
+                        context.startActivity(Intent.createChooser(intetEmail,""));
+
+                        dialog.dismiss();
+                    }
+                });
+
             }
         });
 

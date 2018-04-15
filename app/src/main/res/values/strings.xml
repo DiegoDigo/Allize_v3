@@ -4,4 +4,5 @@
     <string name="hint_email">E-mail</string>
     <string name="button_login_in">Login In</string>
     <string name="title_activity_login">LoginActivity</string>
+    <string name="colsePopUp">X</string>
 </resources>

@@ -42,7 +42,8 @@ public class HomeActivity extends AppCompatActivity {
         c.setNome("Diego Domingos Delmiro");
         c.setNumComanda("201801110001");
         c.setServico("Corte");
-        c.setTelefone("11958044062");
+        c.setTelefone("11945871079");
+        c.setEmail("di3g0d0ming05@gmail.com");
         Comanda c2 = new Comanda();
         c2.setData("12");
         c2.setHora("08:30");
@@ -50,6 +51,7 @@ public class HomeActivity extends AppCompatActivity {
         c2.setNumComanda("201801120002");
         c2.setServico("Corte");
         c2.setTelefone("11958044062");
+        c2.setEmail("di3g0d0ming05@gmail.com");
         Comanda c3 = new Comanda();
         c3.setData("13");
         c3.setHora("08:40");
@@ -57,6 +59,7 @@ public class HomeActivity extends AppCompatActivity {
         c3.setNumComanda("201801130002");
         c3.setServico("Corte");
         c3.setTelefone("11958044062");
+        c3.setEmail("diego.delmiro@controlinformatica.com.br");
         comandas.add(c);
         comandas.add(c2);
         comandas.add(c3);

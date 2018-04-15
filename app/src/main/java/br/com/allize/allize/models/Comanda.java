@@ -8,17 +8,19 @@ public class Comanda {
     private String servico;
     private String telefone;
     private String data;
+    private String email;
 
     public Comanda(){};
 
     public Comanda(String nome, String hora, String numComanda, String servico, String telefone,
-                   String data) {
+                   String data, String email) {
         this.nome = nome;
         this.hora = hora;
         this.numComanda = numComanda;
         this.servico = servico;
         this.telefone = telefone;
         this.data = data;
+        this.email= email;
     }
 
 
@@ -68,5 +70,13 @@ public class Comanda {
 
     public void setData(String data) {
         this.data = data;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 }
